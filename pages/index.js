@@ -28,7 +28,7 @@ export default function Home() {
   const goBack = (e) => {
     e.preventDefault();
     setShowSurvey(true);
-    //setShowSurveyCompleted(false);
+    setShowSurveyCompleted(false);
   }
 
 
