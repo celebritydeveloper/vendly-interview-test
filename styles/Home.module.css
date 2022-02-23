@@ -4,6 +4,8 @@
   background-image: url("../assets/images/bg.jpeg");
   background-position: center;
   background-size: cover;
+  height: 100vh;
+  overflow: hidden;
   width: 100%;
 }
 
@@ -13,21 +15,24 @@
 }
 
 .main {
-  min-height: 100vh;
+  max-height: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  
 }
 
-.survey {
+.section {
   background-color: #ffffff;
   border: 1px solid #00d0be;
   border-radius: 8px;
   color: #343a40;
   margin: 0 auto;
   padding: 1rem 0.8rem;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  width: 100%;
 }
 
 .top_container {
@@ -49,7 +54,7 @@
   width: 100%
 }
 
-.survey_cta_title {
+.survey_cta_title, .validate_title {
   font-family: "Axiforma-Black";
   font-weight: 500;
   margin: 0;
@@ -57,7 +62,24 @@
   text-align: center;
 }
 
-.survey_cta_text {
+.validate_title {
+  font-family: "Axiforma Regular",;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 0.9rem;
+  text-align: center;
+}
+
+.validate_amount {
+  font-family: "Axiforma-Black";
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.survey_cta_text, .validate_text {
   color: rgb(0, 110, 114);
   font-size: 0.8rem;
   margin: 0;
@@ -112,11 +134,62 @@
   color: #fff;
   display: flex;
   justify-content: center;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   outline: none;
   padding: 0.9rem;
   position: relative;
   width: 100%;
+}
+
+
+.survey_submit_button:disabled {
+  background-color: rgba(0, 208, 190, 0.3);
+}
+
+
+.survey_form {
+  max-height: 250px;
+  margin-bottom: 1.4rem;
+  overflow-y: auto;
+}
+
+.survey_form::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+.survey_form::-webkit-scrollbar-track {
+  background: rgba(0, 208, 190, 0.3);
+}
+
+/* Handle */
+.survey_form::-webkit-scrollbar-thumb {
+  background: #00d0be;
+}
+
+/* Handle on hover */
+.survey_form::-webkit-scrollbar-thumb:hover {
+  background: red;
+}
+
+.survey_instruction {
+  background: none;
+  border: none;
+  color:  #00d0be;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  outline: none;
+  width: 100%;
+}
+
+.survey_instruction span:first-of-type {
+  color:  rgb(0, 98, 114);
+}
+
+.survey_instruction span:last-of-type {
+  font-weight: 500;
+  margin-bottom: 0.7rem;
 }
 
 .survey_submit_button span {
@@ -161,105 +234,87 @@
   width: 1.4rem;
 }
 
-.footer {
+.survey_item {
+  align-items: flex-start;
   display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
+  gap: 3px;
+  margin-bottom: 1.5rem;
+  padding: 0 0.4rem;
 }
 
-.footer a {
+.survey_number {
+  color: rgb(0, 98, 114);
+  font-family: "Axiforma-Black";
+  font-size: 0.9rem;
+}
+
+.survey_question {
+  font-size: 0.9rem;
+  font-weight: 200;
+  font-family: "Axiforma-Black";
+}
+
+.survey_input_options {
+  align-items: center;
+  color: rgb(0, 98, 114);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+  gap: 6px;
+  margin-bottom: 2.3rem;
+  padding: 0 1rem;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
+.survey_input_options  input[type="checkbox"]  {
+  appearance: none;
+  background-color: #fff;
   margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+  font: inherit;
+  color: rgb(0, 98, 114);
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid rgb(0, 98, 114);
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
 }
 
-.title,
-.description {
-  text-align: center;
+.validate_amount_trail {
+  font-weight: 200;
+  font-family: "Axiforma Regular";
 }
 
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
+.validate_amount_sign {
   font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+  font-weight: 200;
+  font-family: "Axiforma Regular";
 }
 
-.grid {
+.validate_success_icon {
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+  margin-bottom: 1rem;
+  padding-top: 2rem;
+  width: 100%
 }
 
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+.validate_done {
+  width: 8rem;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.validate_loading {
+  align-items: center;
+  background-color: #00d0be;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 3.5rem auto 1.8rem auto;
+  padding: 1rem 0;
+  width: 85%;
+
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.validate_loading_dots {
+  background-color: rgba(52, 58, 64, 0.5);
+  border-radius: 50px;
+  height: 8px;
+  width: 8px;
 }
