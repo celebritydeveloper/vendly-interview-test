@@ -8,9 +8,9 @@ import flag from "../assets/images/flag.png";
 import done from "../assets/lotties/done.json";
 
 
-export default function Survey() {
+export default function Survey({ showSurvey }) {
   return (
-        <section className={styles.section} >
+        <section className={styles.section} style={{ display: showSurvey ? "block" : "none" }}>
           <div className={styles.top_container}>
             <h3 className={styles.survey_title}>Survey</h3>
           </div>

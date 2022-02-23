@@ -8,9 +8,9 @@ import flag from "../assets/images/flag.png";
 import done from "../assets/lotties/done.json";
 
 
-export default function SurveyCompleted({ submitSurvey, showSurvey, showLoader }) {
+export default function SurveyCompleted({ submitSurvey, goBack, showSurveyCompleted, showLoader }) {
   return (
-        <section className={styles.section} style={{ display: showSurvey ? "block" : "none" }}>
+        <section className={styles.section} style={{ display: showSurveyCompleted ? "block" : "none" }}>
           <div className={styles.top_container}>
             <h3 className={styles.survey_title}>Survey Complete!</h3>
             <div className={styles.success_icon}>
@@ -33,7 +33,7 @@ export default function SurveyCompleted({ submitSurvey, showSurvey, showLoader }
                 <ChevronRightIcon className={styles.survey_submit_icon} style={{ display: showLoader ? "none" : "flex" }} />
               </button>
             </form>
-          <button className={styles.survey_back_button}  >
+          <button className={styles.survey_back_button} onClick={goBack} >
             <ArrowSmLeftIcon className={styles.survey_back_icon} />
             <span>Go Back</span>
           </button>

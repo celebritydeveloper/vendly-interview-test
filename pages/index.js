@@ -9,7 +9,8 @@ import Survey from "../components/Survey";
 export default function Home() {
 
   const [ showLoader, setShowLoader ] = useState(false);
-  const [ showSurvey, setShowSurvey ] = useState(true);
+  const [ showSurvey, setShowSurvey ] = useState(false);
+  const [ showSurveyCompleted, setShowSurveyCompleted ] = useState(true);
   const [ showValidate, setShowValidate ] = useState(false);
 
   const submitSurvey = (e) => {
@@ -22,6 +23,12 @@ export default function Home() {
       setShowSurvey(false);
       setShowValidate(true);
     }, 2800);
+  }
+
+  const goBack = (e) => {
+    e.preventDefault();
+    setShowSurvey(true);
+    //setShowSurveyCompleted(false);
   }
 
 
@@ -38,9 +45,9 @@ export default function Home() {
       </nav>
 
       <main className={styles.main}>
-        {/* <ValidateModal show={showValidate} />
-        <SurveyCompleted submitSurvey={submitSurvey} showSurvey={showSurvey} showLoader={showLoader} /> */}
-        <Survey />
+        <ValidateModal show={showValidate} />
+        <SurveyCompleted submitSurvey={ submitSurvey } goBack={ goBack } showSurveyCompleted={showSurveyCompleted} showLoader={showLoader} />
+        <Survey showSurvey={showSurvey} />
       </main>
 
     </div>
