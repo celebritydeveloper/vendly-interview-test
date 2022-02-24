@@ -4,23 +4,28 @@ import styles from "../styles/Home.module.css";
 import ValidateModal from "../components/ValidateModal";
 import SurveyCompleted from "../components/SurveyCompleted";
 import Survey from "../components/Survey";
+import InstructionModal from "../components/InstructionModal";
 
 
 export default function Home() {
 
   const [ showLoader, setShowLoader ] = useState(false);
+  const [ showArrow, setShowArrow ] = useState(true);
   const [ showSurvey, setShowSurvey ] = useState(false);
   const [ showSurveyCompleted, setShowSurveyCompleted ] = useState(true);
   const [ showValidate, setShowValidate ] = useState(false);
+  const [ showInstruction, setShowInstruction ] = useState(false);
 
   const submitSurvey = (e) => {
     e.preventDefault();
     setShowLoader(true);
+    setShowArrow(false);
     setTimeout(() => {
       setShowLoader(false);
+      setShowArrow(true);
     }, 2000);
     setTimeout(() => {
-      setShowSurvey(false);
+      setShowSurveyCompleted(false);
       setShowValidate(true);
     }, 2800);
   }
@@ -31,9 +36,21 @@ export default function Home() {
     setShowSurveyCompleted(false);
   }
 
+  const openInstruction = (e) => {
+    e.preventDefault();
+    setShowInstruction(true);
+    //setShowSurvey(false);
+  }
+
+  const closeInstruction = (e) => {
+    e.preventDefault();
+    setShowInstruction(false);
+  }
+
 
   return (
     <div className={styles.container}>
+      <div className={styles.instruction_bg} style={{ visibility: showInstruction ? "visible" : "hidden" }}></div>
       <Head>
         <title>Vendly | Survey</title>
         <meta name="description" content="Vendly.com" />
@@ -46,8 +63,9 @@ export default function Home() {
 
       <main className={styles.main}>
         <ValidateModal show={showValidate} />
-        <SurveyCompleted submitSurvey={ submitSurvey } goBack={ goBack } showSurveyCompleted={showSurveyCompleted} showLoader={showLoader} />
-        <Survey showSurvey={showSurvey} />
+        <SurveyCompleted submitSurvey={ submitSurvey } goBack={ goBack } showSurveyCompleted={showSurveyCompleted} showLoader={showLoader} showArrow={showArrow} />
+        <Survey showSurvey={showSurvey} openInstruction={ openInstruction } />
+        <InstructionModal showInstruction={ showInstruction } closeInstruction={ closeInstruction }  />
       </main>
 
     </div>

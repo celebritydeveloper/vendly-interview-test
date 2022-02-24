@@ -1,17 +1,18 @@
 import React from "react";
-import Image from "next/image";
-import Lottie from "lottie-react";
 import styles from "../styles/Home.module.css";
-import { ChevronRightIcon } from "@heroicons/react/outline";
-import { ArrowSmLeftIcon } from "@heroicons/react/solid";
-import flag from "../assets/images/flag.png";
-import done from "../assets/lotties/done.json";
+import Button from "./Button";
 
 
-export default function Survey({ showSurvey }) {
+export default function Survey({ showSurvey, openInstruction }) {
   return (
-        <section className={styles.section} style={{ display: showSurvey ? "block" : "none" }}>
+        <section className= {styles.survey } style={{ display: showSurvey ? "block" : "none" }}>
           <div className={styles.top_container}>
+            <div className={styles.survey_indicators}>
+                <span className={styles.survey_indicator, styles.survey_indicator_done}></span>
+                <span className={styles.survey_indicator, styles.survey_indicator_active}></span>
+                <span className={styles.survey_indicator, styles.survey_indicator_inactive}></span>
+                <span className={styles.survey_indicator, styles.survey_indicator_inactive}></span>
+            </div>
             <h3 className={styles.survey_title}>Survey</h3>
           </div>
             <form>
@@ -43,25 +44,24 @@ export default function Survey({ showSurvey }) {
 
                     <div className={styles.survey_input_options}>
                         <input type="checkbox" className={styles.survey_inpu} />
-                        <span>Three</span>
+                        <span>Four</span>
                     </div>
 
                     <div className={styles.survey_input_options}>
                         <input type="checkbox" className={styles.survey_inpu} />
-                        <span>Three</span>
+                        <span>Eight</span>
                     </div>
 
                     <div className={styles.survey_input_options}>
                         <input type="checkbox" className={styles.survey_inpu} />
-                        <span>Three</span>
+                        <span>Two</span>
                     </div>
                 </div>
-              <button className={styles.survey_submit_button} disabled={true} >
-                <span >Continue</span>
-                <ChevronRightIcon className={styles.survey_submit_icon} />
-              </button>
+              <div className={styles.survey_button_container}>
+                 <Button disabled={true} text="Continue" showArrow={true} />
+              </div>
             </form>
-            <button className={styles.survey_instruction} >
+            <button className={styles.survey_instruction} onClick={ openInstruction } >
                 <span>Read</span>
                 <span>Instructions</span>
             </button>

@@ -1,14 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import Lottie from "lottie-react";
 import styles from "../styles/Home.module.css";
-import { ChevronRightIcon } from "@heroicons/react/outline";
 import { ArrowSmLeftIcon } from "@heroicons/react/solid";
 import flag from "../assets/images/flag.png";
-import done from "../assets/lotties/done.json";
+import Button from "./Button";
 
 
-export default function SurveyCompleted({ submitSurvey, goBack, showSurveyCompleted, showLoader }) {
+export default function SurveyCompleted({ submitSurvey, goBack, showSurveyCompleted, showLoader, showArrow }) {
   return (
         <section className={styles.section} style={{ display: showSurveyCompleted ? "block" : "none" }}>
           <div className={styles.top_container}>
@@ -27,11 +25,7 @@ export default function SurveyCompleted({ submitSurvey, goBack, showSurveyComple
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 0.56 0.5" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"><defs><style>.vendly_black_svg__fil0</style></defs><g id="vendly_black_svg__Layer_x0020_1"><g id="vendly_black_svg___1540609905280"><path className="vendly_black_svg__fil0" d="M.41 0h.07c.03 0 .05.01.07.04.01.02.01.05 0 .08l-.2.35C.34.49.31.51.29.51.26.51.24.5.23.47L.18.38V.36L.36.04C.37.02.4 0 .42 0zM.01.12L.1.28c0 .01.01.01.02.01S.13.29.14.28L.23.12C.24.09.24.06.23.04.22.01.19 0 .16 0H.09C.06 0 .03.01.02.04.01.07.01.1.02.12z" fill={ showLoader ? "#6dd3ca" : "#00d0be"}></path></g></g></svg> 
                 </div>
               </div>
-              <button className={styles.survey_submit_button} style={{ padding: showLoader ? 0 : "" }}>
-                <span style={{ display: showLoader ? "none" : "block" }}>Continue</span>
-                <Lottie animationData={done} className={styles.done} loop={true} autoplay={true} style={{ display: showLoader ? "block" : "none" }} />
-                <ChevronRightIcon className={styles.survey_submit_icon} style={{ display: showLoader ? "none" : "flex" }} />
-              </button>
+              <Button text="Continue" showArrow={showArrow} showLoader={showLoader} />
             </form>
           <button className={styles.survey_back_button} onClick={goBack} >
             <ArrowSmLeftIcon className={styles.survey_back_icon} />
