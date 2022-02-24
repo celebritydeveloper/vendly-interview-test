@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, clone the project:
 
 ```bash
-git clone https://github.com/celebritydeveloper/vendly-interview-test
+git clone https://github.com/celebritydeveloper/vendly-interview-test.git
 ```
 
 Secondly, install the need dependencies:
