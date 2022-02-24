@@ -18,7 +18,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## How To Use UI
+## How To The Use UI
 
 The project starts with the survey complete screen. The continue button on the survey complete screen take user to the validation screen.
 The Go Back button on the survey complete screen takes user to the actual survey question screen while the Read Instruction on the survey question screen pops up the instruction modal.
